@@ -50,7 +50,7 @@ class BusinessHoursExceptions {
 
 	public function get_localized_date_for_day_id( $id ) {
 		$dates = $this->_pre_compute_this_week_actual_dates();
-		return date_i18n( j, $dates[$id] );
+		return date_i18n( d, $dates[$id] );
 	}
 
 	/**
