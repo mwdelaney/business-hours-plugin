@@ -104,7 +104,7 @@ class BusinessHours {
 
 		$timestamp = $this->get_timestamp_using_timezone();
 
-		$arr = array( strtolower( gmdate( 'w', $timestamp ) ) => ucwords( date_i18n( 'l', $timestamp ) ) );
+		$arr = array( strtolower( gmdate( 'w', $timestamp ) ) => ucwords( date_i18n( 'j', $timestamp ) ) );
 
 		return $arr;
 	}

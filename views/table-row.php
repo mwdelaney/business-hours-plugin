@@ -1,9 +1,8 @@
-<tr class='<?php echo $class;?>'>
-	<td class='business_hours_table_day'><?php echo ucwords( $day_name );?></td>
+<span class='<?php echo $class;?>'>
 	<?php if ( $is_open_today ) { ?>
-		<td class='business_hours_table_open'><?php echo ucwords( $open );?></td>
-		<td class='business_hours_table_close'><?php echo ucwords( $close );?></td>
+		<?php echo date(D, strtotime(ucwords( $day_name )));?>
+		<span class='business_hours_table_open'><?php echo date(g, strtotime(ucwords( $open )));?><span class="business_hours_meridian"><?php echo date(A, strtotime(ucwords( $open )));?></span></span>-<span class='business_hours_table_close'><?php echo date(g, strtotime(ucwords( $close )));?><span class="business_hours_meridian"><?php echo date(A, strtotime(ucwords( $close )));?></span></span>
 	<?php } else { ?>
-		<td class='business_hours_table_closed' colspan='2' align='center'><?php echo $closed_text; ?></td>
+		<?php /* <span class='business_hours_table_closed'><?php echo $closed_text; ?></span> */ ?>
 <?php } ?>
-</tr>
+</span>
