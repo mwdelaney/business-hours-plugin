@@ -3,6 +3,8 @@
 	<a class="business_hours_collapsible_handler" href="#"><?php _e( $collapsible_link_anchor, "business-hours" );?></a>
 </div>
 <div class="business_hours_collapsible">
+<?php } else { ?>
+	<div class="business_hours_table">
 <?php } ?>
 
 		<?php
@@ -10,7 +12,4 @@
 			$this->_table_row( $id, $day );
 		}
 		?>
-
-<?php if ( $collapsible_link ) { ?>
 </div>
-<?php } ?>
