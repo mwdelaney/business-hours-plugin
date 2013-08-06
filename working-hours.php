@@ -1,6 +1,6 @@
 <?php
 /*
-Plugin Name: Business Hours Custom
+Plugin Name: Business Hours Customized for APT Foundation
 Plugin URI: http://danieldvork.in/
 Description: Business Hours lets you show to your visitors the time you open and close your business each day of the week.
 Author: MZAWeb, modified by Michael W. Delaney

@@ -38,6 +38,11 @@ class BusinessHoursWidget extends WP_Widget {
 		$open          = esc_html( business_hours()->settings()->get_open_hour( $id ) );
 		$close         = esc_html( business_hours()->settings()->get_close_hour( $id ) );
 		$is_open_today = business_hours()->settings()->is_open( $id );
+		$blogtime = current_time('timestamp');
+		$currenthour = strtotime(date("H:i",$blogtime)); //convert to 24h notation
+		$openhour = strtotime($open);
+		$closehour = strtotime($close);
+		//echo $currenthour .'We are open from ' . $openhour . 'h till ' . $closehour;
 
 		$exceptions = BusinessHoursExceptions::instance()->get_exceptions_for_day_id( $id );
 		if ( !empty( $exceptions ) ) {
@@ -50,10 +55,12 @@ class BusinessHoursWidget extends WP_Widget {
 		echo $before_widget;
 		echo $before_title . $title . $after_title;
 
-		if ( $is_open_today ) {
+		if ( ($is_open_today) && ($openhour <= $currenthour) && ($closehour >= $currenthour) ) {
+
 			$template = $instance['template_hours'];
 			$template = str_replace( "{{Open}}", $open, $template );
 			$template = str_replace( "{{Close}}", $close, $template );
+
 		} else {
 			$template = $instance['template_closed'];
 		}

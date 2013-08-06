@@ -62,10 +62,20 @@ class BusinessHours {
 		$open          = esc_html( business_hours()->settings()->get_open_hour( $id ) );
 		$close         = esc_html( business_hours()->settings()->get_close_hour( $id ) );
 		$is_open_today = business_hours()->settings()->is_open( $id );
+		$blogtime = current_time('timestamp');
+		$currenthour = date("H:i",$blogtime); //convert to 24h notation
+		$openhour = date($open);
+		$closehour = date($close);
+		//echo $currenthour .'We are open from ' . $openhour . 'h till ' . $closehour;
 
 		if ( $is_open_today ) {
+			
+			if (($openhour <= $currenthour) && ($closehour >= $currenthour))
+			{
 			$content = str_replace( "{{TodayOpen}}", $open, $content );
 			$content = str_replace( "{{TodayClose}}", $close, $content );
+			}
+			else $content = $closed;
 		} else {
 			$content = $closed;
 		}
